@@ -79,7 +79,7 @@ export default async function ExploreDetailPage({
           <div className="page-heading compact">
             <p className="eyebrow">{dict.explore.eyebrow}</p>
             <h1>{lyric.title}</h1>
-            <p>
+            <p>``
               {lyric.author.nickname} · BPM {lyric.bpm ?? "-"} · Key{" "}
               {lyric.key ?? "-"}
             </p>

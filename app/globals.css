@@ -512,6 +512,10 @@ select {
   align-items: start;
 }
 
+.editor-layout-secondary {
+  padding-top: 0;
+}
+
 .editor-main,
 .editor-sidebar {
   min-width: 0;

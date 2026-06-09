@@ -118,5 +118,10 @@
   "toast": {
     "saved": "저장했습니다.",
     "deleted": "삭제했습니다."
+  },
+  "confirm": {
+    "deleteLyric": "정말 삭제할까요?",
+    "deleteRhyme": "이 라임 메모를 삭제할까요?",
+    "leaveEditor": "저장하지 않은 내용이 있습니다. 정말 나가시겠어요?"
   }
 }

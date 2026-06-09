@@ -2,6 +2,7 @@ import Link from "next/link";
 import { deleteLyricAction } from "@/app/actions";
 import { AppShell } from "@/components/AppShell";
 import { getCurrentUser } from "@/lib/auth";
+import { SmartForm } from "@/components/SmartForm";
 import { getDictionary, getLocale } from "@/lib/i18n";
 import { LYRIC_PROGRESS_OPTIONS } from "@/lib/lyrics";
 import { prisma } from "@/lib/prisma";
@@ -183,12 +184,15 @@ export default async function DashboardPage({
                   <Link className="ghost-button" href={`/lyrics/${lyric.id}`}>
                     {dict.dashboard.open}
                   </Link>
-                  <form action={deleteLyricAction}>
+                  <SmartForm
+                    action={deleteLyricAction}
+                    confirmMessage={dict.confirm.deleteLyric}
+                  >
                     <input name="id" type="hidden" value={lyric.id} />
                     <button className="danger-button" type="submit">
                       {dict.dashboard.delete}
                     </button>
-                  </form>
+                  </SmartForm>
                 </div>
               </article>
             ))
