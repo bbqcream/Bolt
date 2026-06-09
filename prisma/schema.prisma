@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  nickname     String
+  lyrics       Lyric[]
+  createdAt    DateTime @default(now())
+}
+
+model Lyric {
+  id         String      @id @default(cuid())
+  title      String
+  body       String
+  imageUrl   String
+  bpm        Int?
+  key        String?
+  songForm   String      @default("Verse / Hook")
+  isPublic   Boolean     @default(false)
+  folder     String      @default("Inbox")
+  progress   String      @default("Draft")
+  authorId   String
+  author     User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  rhymeNotes RhymeNote[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+model RhymeNote {
+  id           String   @id @default(cuid())
+  lyricId      String
+  lyric        Lyric    @relation(fields: [lyricId], references: [id], onDelete: Cascade)
+  vowelPattern String
+  memo         String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

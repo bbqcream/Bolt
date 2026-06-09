@@ -1,0 +1,5 @@
+export const DEFAULT_MOOD_IMAGE =
+  "https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=1200&q=80";
+
+export const BLUR_DATA_URL =
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMzInIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCAzMiAyMCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cmVjdCB3aWR0aD0nMzInIGhlaWdodD0nMjAnIGZpbGw9JyNmMmYwZTcnLz48Y2lyY2xlIGN4PScyNCcgY3k9JzYnIHI9JzYnIGZpbGw9JyNmYjcxNDcnLz48cmVjdCB4PSc0JyB5PScxMicgd2lkdGg9JzIyJyBoZWlnaHQ9JzMnIHJ4PScxLjUnIGZpbGw9JyMyNzI3MmEnIG9wYWNpdHk9Jy40Jy8+PC9zdmc+";
