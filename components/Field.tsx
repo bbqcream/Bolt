@@ -38,15 +38,24 @@ export function SelectField({
   label: string;
   name: string;
   defaultValue?: string | null;
-  options: readonly string[];
+  options: readonly (string | { value: string; label: string })[];
 }) {
+  const normalizedOptions = options.map((option) =>
+    typeof option === "string"
+      ? { value: option, label: option }
+      : option,
+  );
+
   return (
     <label className="field">
       <span>{label}</span>
-      <select name={name} defaultValue={defaultValue ?? options[0] ?? ""}>
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
+      <select
+        name={name}
+        defaultValue={defaultValue ?? normalizedOptions[0]?.value ?? ""}
+      >
+        {normalizedOptions.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
           </option>
         ))}
       </select>

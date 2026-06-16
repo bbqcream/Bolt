@@ -16,6 +16,13 @@
   --success: #0f9f6e;
   --danger: #e45858;
   --shadow: 0 12px 32px rgba(17, 24, 39, 0.05);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
 }
 
 @theme inline {
@@ -80,10 +87,10 @@ select {
   z-index: 40;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
   min-height: 48px;
   max-width: min(320px, calc(100vw - 32px));
-  padding: 0 16px;
+  padding: 0 var(--space-4);
   border: 1px solid rgba(17, 24, 39, 0.06);
   border-radius: 14px;
   background: rgba(17, 24, 39, 0.92);
@@ -106,17 +113,17 @@ select {
   position: sticky;
   top: 0;
   z-index: 20;
-  padding: 14px 14px 0;
+  padding: var(--space-4) var(--space-4) 0;
 }
 
 .topbar-surface {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: var(--space-4);
   width: min(1120px, 100%);
   min-height: 62px;
   margin: 0 auto;
-  padding: 10px 14px;
+  padding: var(--space-3) var(--space-4);
   border: 1px solid var(--line);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.92);
@@ -127,14 +134,14 @@ select {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
   min-width: 0;
 }
 
 .brand-copy {
   display: flex;
   align-items: baseline;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .brand-copy strong {
@@ -168,7 +175,7 @@ select {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .main-nav {
@@ -183,7 +190,7 @@ select {
   align-items: center;
   justify-content: center;
   min-height: 38px;
-  padding: 0 14px;
+  padding: 0 var(--space-4);
   border: 1px solid transparent;
   border-radius: 8px;
   font-size: 13px;
@@ -245,7 +252,7 @@ select {
   display: inline-flex;
   align-items: center;
   height: 34px;
-  padding: 0 11px;
+  padding: 0 var(--space-3);
   border-radius: 999px;
   background: #f3f6fa;
   color: #425466;
@@ -267,7 +274,7 @@ select {
 
 .segmented a {
   min-width: 44px;
-  padding: 7px 10px;
+  padding: var(--space-2) var(--space-3);
   text-align: center;
   font-size: 11px;
   font-weight: 800;
@@ -286,17 +293,17 @@ select {
 .auth-page {
   width: min(1120px, calc(100% - 32px));
   margin: 0 auto;
-  padding: 28px 0 64px;
+  padding: var(--space-7) 0 64px;
 }
 
 .page-heading {
   display: grid;
-  gap: 10px;
-  margin-bottom: 28px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
 }
 
 .page-heading.compact {
-  margin-bottom: 16px;
+  margin-bottom: var(--space-4);
 }
 
 .eyebrow,
@@ -329,7 +336,7 @@ select {
 .feed-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 18px;
+  gap: var(--space-5);
 }
 
 .lyric-card,
@@ -382,12 +389,12 @@ select {
 .panel,
 .archive-item,
 .empty-state {
-  padding: 20px;
+  padding: var(--space-5);
 }
 
 .card-body {
   display: grid;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .card-body h2,
@@ -417,7 +424,7 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .card-footer {
@@ -436,7 +443,7 @@ select {
 
 .dashboard-grid {
   display: grid;
-  gap: 24px;
+  gap: var(--space-6);
   align-content: start;
 }
 
@@ -454,7 +461,7 @@ select {
 .editor-form,
 .editor-sidebar {
   display: grid;
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .panel-description {
@@ -469,16 +476,16 @@ select {
 }
 
 .create-side-panel {
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .create-side-grid {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .archive-list {
-  gap: 16px;
+  gap: var(--space-4);
   align-content: start;
 }
 
@@ -489,7 +496,7 @@ select {
 .archive-item {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 18px;
+  gap: var(--space-5);
   align-items: start;
 }
 
@@ -498,7 +505,7 @@ select {
 .filter-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
 }
 
 .archive-actions {
@@ -508,7 +515,7 @@ select {
 .editor-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 332px;
-  gap: 20px;
+  gap: var(--space-6);
   align-items: start;
 }
 
@@ -523,7 +530,7 @@ select {
 
 .field {
   display: grid;
-  gap: 6px;
+  gap: var(--space-2);
   color: var(--muted);
   font-size: 11px;
   font-weight: 800;
@@ -537,7 +544,7 @@ select {
   border-radius: 8px;
   background: #ffffff;
   color: var(--foreground);
-  padding: 12px 13px;
+  padding: var(--space-3) var(--space-4);
   font-weight: 500;
   outline: none;
   font-size: 14px;
@@ -564,13 +571,13 @@ select {
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .check-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-3);
   color: var(--muted-strong);
   font-weight: 700;
 }
@@ -584,7 +591,7 @@ select {
 .auth-panel {
   display: grid;
   width: min(420px, 100%);
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .form-error {
@@ -596,14 +603,14 @@ select {
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .summary-card,
 .stats-card {
   display: grid;
-  gap: 6px;
-  padding: 18px;
+  gap: var(--space-2);
+  padding: var(--space-5);
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #ffffff;
@@ -626,22 +633,22 @@ select {
 
 .filter-panel,
 .rhyme-list-panel {
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .filter-grid,
 .stats-grid {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .filter-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px 16px;
+  gap: var(--space-4);
 }
 
 .filter-field {
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .filter-field span {
@@ -654,7 +661,7 @@ select {
 .filter-field input,
 .filter-field select {
   min-height: 54px;
-  padding: 0 18px;
+  padding: 0 var(--space-5);
   border-radius: 14px;
   font-size: 15px;
   font-weight: 600;
@@ -670,34 +677,34 @@ select {
 
 .filter-actions {
   justify-content: flex-start;
-  gap: 12px;
-  padding-top: 2px;
+  gap: var(--space-3);
+  padding-top: var(--space-1);
   margin-top: 0;
 }
 
 .filter-actions .solid-button,
 .filter-actions .ghost-button {
   min-height: 42px;
-  padding: 0 18px;
+  padding: 0 var(--space-5);
   border-radius: 12px;
 }
 
 .stats-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: 16px 0 18px;
+  margin: var(--space-4) 0 var(--space-5);
 }
 
 .section-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .rhyme-item {
   display: grid;
-  gap: 10px;
-  padding: 12px 0;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -716,7 +723,7 @@ select {
 }
 
 .lyric-read-panel {
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .lyric-detail-body {
@@ -729,11 +736,11 @@ select {
 
 .meta-list {
   display: grid;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .metadata-panel {
-  gap: 14px;
+  gap: var(--space-4);
 }
 
 .metadata-header {
@@ -744,7 +751,7 @@ select {
   display: inline-flex;
   align-items: center;
   height: 28px;
-  padding: 0 10px;
+  padding: 0 var(--space-3);
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent-strong);
@@ -756,15 +763,15 @@ select {
   display: grid;
   gap: 0;
   margin: 0;
-  padding-top: 2px;
+  padding-top: var(--space-1);
 }
 
 .metadata-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 14px 0;
+  gap: var(--space-5);
+  padding: var(--space-4) 0;
   border-top: 1px solid var(--line);
 }
 
@@ -797,8 +804,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 12px;
+  gap: var(--space-4);
+  padding-bottom: var(--space-3);
   border-bottom: 1px solid var(--line);
 }
 
@@ -828,7 +835,7 @@ select {
   }
 
   .topbar {
-    padding: 12px 12px 0;
+    padding: var(--space-3) var(--space-3) 0;
   }
 
   .topbar-surface,
@@ -867,7 +874,7 @@ select {
   .editor-layout,
   .auth-page {
     width: min(100% - 24px, 1120px);
-    padding-top: 24px;
+    padding-top: var(--space-6);
   }
 
   .metadata-row {

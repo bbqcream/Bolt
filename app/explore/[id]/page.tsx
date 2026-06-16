@@ -6,6 +6,11 @@ import { AppShell } from "@/components/AppShell";
 import { getCurrentUser } from "@/lib/auth";
 import { BLUR_DATA_URL } from "@/lib/images";
 import { getDictionary, getLocale } from "@/lib/i18n";
+import {
+  getFolderLabel,
+  getProgressLabel,
+  getSongFormLabel,
+} from "@/lib/lyric-labels";
 import { countLyricStats } from "@/lib/lyrics";
 import { prisma } from "@/lib/prisma";
 
@@ -79,7 +84,7 @@ export default async function ExploreDetailPage({
           <div className="page-heading compact">
             <p className="eyebrow">{dict.explore.eyebrow}</p>
             <h1>{lyric.title}</h1>
-            <p>``
+            <p>
               {lyric.author.nickname} · BPM {lyric.bpm ?? "-"} · Key{" "}
               {lyric.key ?? "-"}
             </p>
@@ -143,15 +148,15 @@ export default async function ExploreDetailPage({
               </div>
               <div className="metadata-row">
                 <dt>{dict.editor.songForm}</dt>
-                <dd>{lyric.songForm}</dd>
+                <dd>{getSongFormLabel(dict, lyric.songForm)}</dd>
               </div>
               <div className="metadata-row">
                 <dt>{dict.dashboard.folder}</dt>
-                <dd>{lyric.folder}</dd>
+                <dd>{getFolderLabel(dict, lyric.folder)}</dd>
               </div>
               <div className="metadata-row">
                 <dt>{dict.dashboard.progress}</dt>
-                <dd>{lyric.progress}</dd>
+                <dd>{getProgressLabel(dict, lyric.progress)}</dd>
               </div>
               <div className="metadata-row">
                 <dt>{dict.dashboard.updated}</dt>

@@ -15,10 +15,12 @@ import { getCurrentUser } from "@/lib/auth";
 import { BLUR_DATA_URL } from "@/lib/images";
 import { getDictionary, getLocale } from "@/lib/i18n";
 import {
+  getFolderOptions,
+  getProgressOptions,
+  getSongFormOptions,
+} from "@/lib/lyric-labels";
+import {
   countLyricStats,
-  LYRIC_FOLDER_OPTIONS,
-  LYRIC_PROGRESS_OPTIONS,
-  LYRIC_SONG_FORM_OPTIONS,
 } from "@/lib/lyrics";
 import { prisma } from "@/lib/prisma";
 
@@ -78,6 +80,9 @@ export default async function LyricPage({
   const selectedRhymeNote =
     lyric.rhymeNotes.find((entry) => entry.id === note) ?? null;
   const stats = countLyricStats(lyric.body);
+  const folderOptions = getFolderOptions(dict);
+  const progressOptions = getProgressOptions(dict);
+  const songFormOptions = getSongFormOptions(dict);
 
   return (
     <AppShell>
@@ -177,19 +182,19 @@ export default async function LyricPage({
                 label={dict.editor.songForm}
                 name="songForm"
                 defaultValue={lyric.songForm}
-                options={LYRIC_SONG_FORM_OPTIONS}
+                options={songFormOptions}
               />
               <SelectField
                 label={dict.dashboard.folder}
                 name="folder"
                 defaultValue={lyric.folder}
-                options={LYRIC_FOLDER_OPTIONS}
+                options={folderOptions}
               />
               <SelectField
                 label={dict.dashboard.progress}
                 name="progress"
                 defaultValue={lyric.progress}
-                options={LYRIC_PROGRESS_OPTIONS}
+                options={progressOptions}
               />
               <button className="solid-button wide" type="submit">
                 {dict.editor.save}

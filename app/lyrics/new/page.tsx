@@ -4,6 +4,11 @@ import { Field, SelectField, TextAreaField } from "@/components/Field";
 import { SmartForm } from "@/components/SmartForm";
 import { getDictionary } from "@/lib/i18n";
 import {
+  getFolderOptions,
+  getProgressOptions,
+  getSongFormOptions,
+} from "@/lib/lyric-labels";
+import {
   LYRIC_FOLDER_OPTIONS,
   LYRIC_PROGRESS_OPTIONS,
   LYRIC_SONG_FORM_OPTIONS,
@@ -13,6 +18,9 @@ export const dynamic = "force-dynamic";
 
 export default async function NewLyricPage() {
   const dict = await getDictionary();
+  const folderOptions = getFolderOptions(dict);
+  const progressOptions = getProgressOptions(dict);
+  const songFormOptions = getSongFormOptions(dict);
 
   return (
     <AppShell activeNav="new">
@@ -61,19 +69,19 @@ export default async function NewLyricPage() {
                   label={dict.editor.songForm}
                   name="songForm"
                   defaultValue={LYRIC_SONG_FORM_OPTIONS[0]}
-                  options={LYRIC_SONG_FORM_OPTIONS}
+                  options={songFormOptions}
                 />
                 <SelectField
                   label={dict.dashboard.folder}
                   name="folder"
                   defaultValue={LYRIC_FOLDER_OPTIONS[0]}
-                  options={LYRIC_FOLDER_OPTIONS}
+                  options={folderOptions}
                 />
                 <SelectField
                   label={dict.dashboard.progress}
                   name="progress"
                   defaultValue={LYRIC_PROGRESS_OPTIONS[0]}
-                  options={LYRIC_PROGRESS_OPTIONS}
+                  options={progressOptions}
                 />
               </div>
               <p className="panel-description">{dict.editor.newHint}</p>

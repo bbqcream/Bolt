@@ -4,7 +4,12 @@ import { AppShell } from "@/components/AppShell";
 import { getCurrentUser } from "@/lib/auth";
 import { SmartForm } from "@/components/SmartForm";
 import { getDictionary, getLocale } from "@/lib/i18n";
-import { LYRIC_PROGRESS_OPTIONS } from "@/lib/lyrics";
+import {
+  getFolderLabel,
+  getFolderOptions,
+  getProgressLabel,
+  getProgressOptions,
+} from "@/lib/lyric-labels";
 import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
@@ -70,6 +75,10 @@ export default async function DashboardPage({
   ]);
 
   const folders = Array.from(new Set(allLyrics.map((lyric) => lyric.folder)));
+  const progressOptions = getProgressOptions(dict);
+  const folderOptions = getFolderOptions(dict).filter((option) =>
+    folders.includes(option.value),
+  );
   const totalCount = allLyrics.length;
   const publicCount = allLyrics.filter((lyric) => lyric.isPublic).length;
   const draftCount = allLyrics.filter((lyric) => lyric.progress === "Draft").length;
@@ -121,9 +130,9 @@ export default async function DashboardPage({
                 <span>{dict.dashboard.progress}</span>
                 <select defaultValue={progress} name="progress">
                   <option value="all">{dict.dashboard.all}</option>
-                  {LYRIC_PROGRESS_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {progressOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
                     </option>
                   ))}
                 </select>
@@ -132,9 +141,9 @@ export default async function DashboardPage({
                 <span>{dict.dashboard.folder}</span>
                 <select defaultValue={folder} name="folder">
                   <option value="all">{dict.dashboard.all}</option>
-                  {folders.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  {folderOptions.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
                     </option>
                   ))}
                 </select>
@@ -165,7 +174,8 @@ export default async function DashboardPage({
               <article className="archive-item" key={lyric.id}>
                 <div>
                   <p className="muted">
-                    {lyric.folder} · {lyric.progress} ·{" "}
+                    {getFolderLabel(dict, lyric.folder)} ·{" "}
+                    {getProgressLabel(dict, lyric.progress)} ·{" "}
                     {lyric.isPublic ? dict.dashboard.public : dict.dashboard.private}
                   </p>
                   <h2>

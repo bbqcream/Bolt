@@ -7,6 +7,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useRouter } from "next/navigation";
 
 type SmartFormProps = PropsWithChildren<
   Omit<FormHTMLAttributes<HTMLFormElement>, "action"> & {
@@ -40,8 +41,10 @@ export function SmartForm({
   warnOnDirtyExit = false,
   ...props
 }: SmartFormProps) {
+  const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const initialSnapshotRef = useRef("");
+  const bypassPromptRef = useRef(false);
   const [isDirty, setIsDirty] = useState(false);
 
   useEffect(() => {
@@ -76,6 +79,7 @@ export function SmartForm({
     if (!warnOnDirtyExit || !isDirty) return;
 
     function handleBeforeUnload(event: BeforeUnloadEvent) {
+      if (bypassPromptRef.current) return;
       event.preventDefault();
       event.returnValue = dirtyWarningMessage ?? "";
     }
@@ -83,6 +87,74 @@ export function SmartForm({
     window.addEventListener("beforeunload", handleBeforeUnload);
     return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, [dirtyWarningMessage, isDirty, warnOnDirtyExit]);
+
+  useEffect(() => {
+    if (!warnOnDirtyExit || !isDirty) return;
+
+    function handleDocumentClick(event: MouseEvent) {
+      if (bypassPromptRef.current || event.defaultPrevented || event.button !== 0) {
+        return;
+      }
+
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+        return;
+      }
+
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+
+      const anchor = target.closest("a[href]");
+      if (!(anchor instanceof HTMLAnchorElement)) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      if (anchor.hasAttribute("download")) return;
+
+      const nextUrl = new URL(anchor.href, window.location.href);
+      const currentUrl = new URL(window.location.href);
+      if (nextUrl.href === currentUrl.href) return;
+
+      const shouldLeave = window.confirm(dirtyWarningMessage ?? "");
+      if (!shouldLeave) {
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      bypassPromptRef.current = true;
+      setIsDirty(false);
+
+      if (nextUrl.origin === currentUrl.origin) {
+        router.push(`${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`);
+        return;
+      }
+
+      window.location.assign(nextUrl.href);
+    }
+
+    function handlePopState() {
+      if (bypassPromptRef.current) return;
+
+      const shouldLeave = window.confirm(dirtyWarningMessage ?? "");
+      if (shouldLeave) {
+        bypassPromptRef.current = true;
+        setIsDirty(false);
+        return;
+      }
+
+      bypassPromptRef.current = true;
+      window.history.go(1);
+      window.setTimeout(() => {
+        bypassPromptRef.current = false;
+      }, 0);
+    }
+
+    document.addEventListener("click", handleDocumentClick, true);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick, true);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [dirtyWarningMessage, isDirty, router, warnOnDirtyExit]);
 
   function handleDirtyState() {
     const form = formRef.current;
@@ -110,6 +182,7 @@ export function SmartForm({
           return;
         }
 
+        bypassPromptRef.current = true;
         setIsDirty(false);
         onSubmit?.(event);
       }}

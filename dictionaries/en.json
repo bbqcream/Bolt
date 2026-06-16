@@ -83,6 +83,26 @@
     "newSection": "New note",
     "newHint": "You can refine the title and body further in the full editor later."
   },
+  "lyrics": {
+    "progressLabels": {
+      "Draft": "Draft",
+      "Polishing": "Polishing",
+      "Ready to Share": "Ready to Share",
+      "Completed": "Completed"
+    },
+    "folderLabels": {
+      "Inbox": "Inbox",
+      "Verse Ideas": "Verse Ideas",
+      "Hook Lab": "Hook Lab",
+      "Public Sparks": "Public Sparks"
+    },
+    "songFormLabels": {
+      "Verse / Hook": "Verse / Hook",
+      "Verse / Pre / Hook": "Verse / Pre / Hook",
+      "Verse / Hook / Bridge": "Verse / Hook / Bridge",
+      "Free Form": "Free Form"
+    }
+  },
   "auth": {
     "email": "Email",
     "password": "Password",

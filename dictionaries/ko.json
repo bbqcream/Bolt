@@ -83,6 +83,26 @@
     "newSection": "새 노트",
     "newHint": "제목과 본문은 나중에 상세 에디터에서 더 다듬을 수 있습니다."
   },
+  "lyrics": {
+    "progressLabels": {
+      "Draft": "초안",
+      "Polishing": "다듬는 중",
+      "Ready to Share": "공유 준비",
+      "Completed": "완료"
+    },
+    "folderLabels": {
+      "Inbox": "인박스",
+      "Verse Ideas": "벌스 아이디어",
+      "Hook Lab": "훅 연구실",
+      "Public Sparks": "공개 스파크"
+    },
+    "songFormLabels": {
+      "Verse / Hook": "벌스 / 훅",
+      "Verse / Pre / Hook": "벌스 / 프리 / 훅",
+      "Verse / Hook / Bridge": "벌스 / 훅 / 브리지",
+      "Free Form": "자유 형식"
+    }
+  },
   "auth": {
     "email": "이메일",
     "password": "비밀번호",
