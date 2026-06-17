@@ -18,6 +18,10 @@ function getString(formData: FormData, key: string) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
 function hasValue(formData: FormData, key: string) {
   return formData.has(key);
 }
@@ -64,8 +68,12 @@ export async function signupAction(formData: FormData) {
   const password = getString(formData, "password");
   const nickname = getString(formData, "nickname") || email.split("@")[0];
 
-  if (!email || password.length < 6) {
+  if (!isValidEmail(email)) {
     redirect("/signup?error=invalid");
+  }
+
+  if (password.length < 6) {
+    redirect("/signup?error=password");
   }
 
   const existing = await prisma.user.findUnique({ where: { email } });

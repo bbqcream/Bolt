@@ -600,6 +600,23 @@ select {
   font-weight: 700;
 }
 
+.auth-switch {
+  margin: 0;
+  color: var(--muted-strong);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.auth-switch a {
+  color: var(--accent);
+}
+
+.auth-switch a:hover {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

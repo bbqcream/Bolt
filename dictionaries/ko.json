@@ -111,9 +111,15 @@
     "signupTitle": "회원가입",
     "loginSubmit": "로그인",
     "signupSubmit": "계정 만들기",
+    "noAccount": "아직 계정이 없나요?",
+    "goSignup": "회원가입",
+    "hasAccount": "이미 계정이 있나요?",
+    "goLogin": "로그인",
     "demo": "데모 계정: demo@volt.local / volt1234",
     "invalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
-    "invalidSignup": "입력한 가입 정보를 다시 확인해주세요."
+    "invalidSignup": "올바른 이메일 주소를 입력해주세요.",
+    "signupEmailExists": "이미 가입된 이메일입니다. 로그인해주세요.",
+    "signupPasswordShort": "비밀번호는 6자 이상이어야 합니다."
   },
   "status": {
     "loading": "불러오는 중입니다...",

@@ -111,9 +111,15 @@
     "signupTitle": "Sign up",
     "loginSubmit": "Log in",
     "signupSubmit": "Create account",
+    "noAccount": "No account yet?",
+    "goSignup": "Sign up",
+    "hasAccount": "Already have an account?",
+    "goLogin": "Log in",
     "demo": "Demo account: demo@volt.local / volt1234",
     "invalidCredentials": "The email or password is incorrect.",
-    "invalidSignup": "Please check the signup details and try again."
+    "invalidSignup": "Please enter a valid email address.",
+    "signupEmailExists": "That email is already registered. Please log in.",
+    "signupPasswordShort": "Password must be at least 6 characters."
   },
   "status": {
     "loading": "Loading...",
