@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql" // 1. sqlite에서 postgresql로 변경
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id           String   @id @default(uuid()) // 2. PostgreSQL 호환을 위해 uuid() 추천
+  id           String   @id @default(cuid())
   email        String   @unique
   passwordHash String
   nickname     String
@@ -17,7 +17,7 @@ model User {
 }
 
 model Lyric {
-  id         String      @id @default(uuid())
+  id         String      @id @default(cuid())
   title      String
   body       String
   imageUrl   String
@@ -35,7 +35,7 @@ model Lyric {
 }
 
 model RhymeNote {
-  id           String   @id @default(uuid())
+  id           String   @id @default(cuid())
   lyricId      String
   lyric        Lyric    @relation(fields: [lyricId], references: [id], onDelete: Cascade)
   vowelPattern String
